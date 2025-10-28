@@ -4,10 +4,12 @@
 
 ## Overview
 
-This project is an integration between Microsoft Defender for Office365 and VMRay products: Analyzer, FinalVerdict and TotalInsight. 
-The connector will collect alerts and related evidences, and query or submit these samples into VMRay Sandbox.
-It accelerates the triage of alerts by adding comments to the alert in MS Defender Console with the analysis of the sample.
-It also retrieves IOC values from VMRay and submits them into Microsoft Defender for O365.
+This project provides an integration between Microsoft Defender for Office 365 and VMRay products — FinalVerdict and TotalInsight.
+Its goal is to streamline alert triage and enhance protection by automatically enriching Defender with malicious Indicators of Compromise (IOCs) identified by VMRay.
+
+The connector continuously monitors email-related alerts in Microsoft Defender and collects associated URLs. These URLs are automatically submitted (if not already analyzed) to the VMRay Sandbox, and the resulting analysis verdicts are posted back to the original alert as comments in the Microsoft Defender console.
+
+In addition, the connector retrieves IOC data from VMRay and automatically imports those indicators into Microsoft Defender for Office 365, ensuring that future threats are detected and blocked more efficiently.
 
 ## Solution Overview
 - The connector build using Azure Function App.
@@ -21,7 +23,7 @@ It also retrieves IOC values from VMRay and submits them into Microsoft Defender
 
 ## Requirements
 - Microsoft Defender for Office365.
-- VMRay Analyzer, VMRay FinalVerdict, VMRay TotalInsight.
+- VMRay FinalVerdict, VMRay TotalInsight.
 - Microsoft Azure
   1. Azure functions with Flex Consumption plan.
      Reference: https://learn.microsoft.com/en-us/azure/azure-functions/flex-consumption-plan
