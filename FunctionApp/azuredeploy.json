@@ -474,7 +474,7 @@
             },
             {
               "name": "AddTagsToIncident",
-              "value": "[variables('AddTagsToIncident')]"
+              "value": "[parameters('AddTagsToIncident')]"
             }
           ]
         }
