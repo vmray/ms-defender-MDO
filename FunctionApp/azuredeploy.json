@@ -39,7 +39,7 @@
     },
     "VmrayBaseURL": {
       "type": "string",
-      "defaultValue": "https://us.cloud.vmray.com",
+      "defaultValue": "",
       "minLength": 1,
       "metadata": {
         "description": "Enter the VMRay Base URL."
