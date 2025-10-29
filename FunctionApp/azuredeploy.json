@@ -523,7 +523,7 @@
         "WaitSection"
       ],
       "properties": {
-        "packageUri": "https://github.com/shubhamloginsoft/o365/raw/refs/heads/main/released-package.zip",
+        "packageUri": "https://github.com/vmray/ms-defender-MDO/raw/refs/heads/main/FunctionApp/released-package.zip",
         "remoteBuild": true
       }
     },
