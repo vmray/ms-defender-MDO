@@ -6,14 +6,14 @@
 
 This project provides an integration between Microsoft Defender for Office 365 (MDO) and VMRay products — FinalVerdict and TotalInsight.
 
-## Why to integrate MDO with VMRay?
+### Why to integrate MDO with VMRay?
 
 - **Understand Attacker Intent**: Gain full visibility into the next stage of a phishing attack with detailed insight into attacker behavior and objectives.
 - **Streamline Alert Triage**: Get instant clarity within Microsoft Defender alerts — including verdicts, malware names, classifications, and VTI data. The integration automatically analyzes both the phishing URL(s) and any payloads they may download.
 - **Enhance Protection**: Automatically add IOCs from VMRay analysis to Microsoft Defender indicators, strengthening defenses and preventing future attacks.
 - **Accelerate Incident Response**: Access comprehensive, in-depth sandbox reports directly from VMRay to speed up investigation and resolution.
 
-## Technical Solution Overview
+### Technical Solution Overview
 - The connector build using Azure Function App.
   1. The function app is time triggered function app.
   2. It's continuously fetching `O365` alerts from defender portal.
@@ -22,7 +22,7 @@ This project provides an integration between Microsoft Defender for Office 365 (
   5. Azure function app `VMRay_O365` uses advance hunting query to fetch Urls.
   6. If Url present `VMRay_O365` submit that Url to VMRay.
   7. Once VMRay analyse the Url `VMRay_O365` fetch the sample details and add the details to alert's comment.
-## Features
+### Features
 - **Automatic URL Extraction from Defender Alerts**: The connector automatically retrieves URLs from multiple Defender alert types, including: Emails reported as phishing or spam, Detected malicious emails, Phishing or blocked URLs, Potentially malicious URL clicks, Emails removed after delivery and any Custom alerts you may create,
 - **Configurable URL Submission to VMRay**: URLs are submitted to VMRay for analysis if no prior analysis exists within a configurable time window (e.g., the past x days).
 - **Comprehensive Analysis Integration**: Analysis results for all samples—including multiple URLs and any child samples—are added as comments to the corresponding Microsoft Defender alert. Each comment includes the analysis date for traceability.
