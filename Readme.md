@@ -9,14 +9,10 @@ Its goal is to streamline alert triage and enhance protection by automatically e
 
 ## Why to integrate MDO with VMRay?
 
-### Understand Attacker Intent
-Gain full visibility into the next stage of a phishing attack with detailed insight into attacker behavior and objectives.
-### Streamline Alert Triage
-Get instant clarity within Microsoft Defender alerts — including verdicts, malware names, classifications, and VTI data. The integration automatically analyzes both the phishing URL(s) and any payloads they may download.
-### Enhance Protection
-Automatically add IOCs from VMRay analysis to Microsoft Defender indicators, strengthening defenses and preventing future attacks.
-### Accelerate Incident Response
-Access comprehensive, in-depth sandbox reports directly from VMRay to speed up investigation and resolution.
+- Understand Attacker Intent: Gain full visibility into the next stage of a phishing attack with detailed insight into attacker behavior and objectives.
+- Streamline Alert Triage: Get instant clarity within Microsoft Defender alerts — including verdicts, malware names, classifications, and VTI data. The integration automatically analyzes both the phishing URL(s) and any payloads they may download.
+- Enhance Protection: Automatically add IOCs from VMRay analysis to Microsoft Defender indicators, strengthening defenses and preventing future attacks.
+- Accelerate Incident Response: Access comprehensive, in-depth sandbox reports directly from VMRay to speed up investigation and resolution.
 
 ## Technical Solution Overview
 - The connector build using Azure Function App.
