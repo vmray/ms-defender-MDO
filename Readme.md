@@ -9,13 +9,13 @@ Its goal is to streamline alert triage and enhance protection by automatically e
 
 ## Why to integrate MDO with VMRay?
 
-# Understand Attacker Intent
+### Understand Attacker Intent
 Gain full visibility into the next stage of a phishing attack with detailed insight into attacker behavior and objectives.
-# Streamline Alert Triage
+### Streamline Alert Triage
 Get instant clarity within Microsoft Defender alerts — including verdicts, malware names, classifications, and VTI data. The integration automatically analyzes both the phishing URL(s) and any payloads they may download.
-# Enhance Protection
+### Enhance Protection
 Automatically add IOCs from VMRay analysis to Microsoft Defender indicators, strengthening defenses and preventing future attacks.
-# Accelerate Incident Response
+### Accelerate Incident Response
 Access comprehensive, in-depth sandbox reports directly from VMRay to speed up investigation and resolution.
 
 ## Technical Solution Overview
@@ -36,7 +36,7 @@ Access comprehensive, in-depth sandbox reports directly from VMRay to speed up i
 - Serverless Architecture: The connector is deployed on Azure as a serverless function app with blob storage. Deployment is simplified via a one-click setup directly from GitHub.
 - Simplified Debugging and Logging: Detailed execution logs are available within the Azure Function App. Alerts are annotated if no URL is found or if the function encounters an error during execution
 - Configurable Polling Interval: The frequency at which Defender alerts are fetched (polling interval) can be adjusted to fit operational requirements.
-# Known Issues
+#### Known Issues
 - Teams Alerts: URLs cannot currently be extracted from Teams alerts due to API limitations in Microsoft Defender and Microsoft Graph.
 - Email Attachments: File attachments from emails are not analyzed, as they become inaccessible once the email has been removed or quarantined.
 ## Requirements
