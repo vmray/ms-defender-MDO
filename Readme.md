@@ -4,15 +4,14 @@
 
 ## Overview
 
-This project provides an integration between Microsoft Defender for Office 365 and VMRay products — FinalVerdict and TotalInsight.
-Its goal is to streamline alert triage and enhance protection by automatically enriching Defender with malicious Indicators of Compromise (IOCs) identified by VMRay.
+This project provides an integration between Microsoft Defender for Office 365 (MDO) and VMRay products — FinalVerdict and TotalInsight.
 
 ## Why to integrate MDO with VMRay?
 
-- Understand Attacker Intent: Gain full visibility into the next stage of a phishing attack with detailed insight into attacker behavior and objectives.
-- Streamline Alert Triage: Get instant clarity within Microsoft Defender alerts — including verdicts, malware names, classifications, and VTI data. The integration automatically analyzes both the phishing URL(s) and any payloads they may download.
-- Enhance Protection: Automatically add IOCs from VMRay analysis to Microsoft Defender indicators, strengthening defenses and preventing future attacks.
-- Accelerate Incident Response: Access comprehensive, in-depth sandbox reports directly from VMRay to speed up investigation and resolution.
+- **Understand Attacker Intent**: Gain full visibility into the next stage of a phishing attack with detailed insight into attacker behavior and objectives.
+- **Streamline Alert Triage**: Get instant clarity within Microsoft Defender alerts — including verdicts, malware names, classifications, and VTI data. The integration automatically analyzes both the phishing URL(s) and any payloads they may download.
+- **Enhance Protection**: Automatically add IOCs from VMRay analysis to Microsoft Defender indicators, strengthening defenses and preventing future attacks.
+- **Accelerate Incident Response**: Access comprehensive, in-depth sandbox reports directly from VMRay to speed up investigation and resolution.
 
 ## Technical Solution Overview
 - The connector build using Azure Function App.
@@ -24,14 +23,14 @@ Its goal is to streamline alert triage and enhance protection by automatically e
   6. If Url present `VMRay_O365` submit that Url to VMRay.
   7. Once VMRay analyse the Url `VMRay_O365` fetch the sample details and add the details to alert's comment.
 ## Features
-- Automatic URL Extraction from Defender Alerts: The connector automatically retrieves URLs from multiple Defender alert types, including: Emails reported as phishing or spam, Detected malicious emails, Phishing or blocked URLs, Potentially malicious URL clicks, Emails removed after delivery and any Custom alerts you may create,
-- Configurable URL Submission to VMRay: URLs are submitted to VMRay for analysis if no prior analysis exists within a configurable time window (e.g., the past x days).
-- Comprehensive Analysis Integration: Analysis results for all samples—including multiple URLs and any child samples—are added as comments to the corresponding Microsoft Defender alert. Each comment includes the analysis date for traceability.
-- Automatic IOC Enrichment in Defender: Malicious and suspicious IOCs identified by VMRay are automatically added as Microsoft Defender indicators. Separate configurable actions (e.g., block, audit) can be defined for Malicious vs. suspicious verdicts, and files vs URLs/IPs). IOC expiration time is fully configurable.
-- Incident Tagging in Defender: Defender incidents are automatically tagged with the most severe verdict identified by VMRay (across multiple related alerts) and the associated threat name extracted from analyzed URLs
-- Serverless Architecture: The connector is deployed on Azure as a serverless function app with blob storage. Deployment is simplified via a one-click setup directly from GitHub.
-- Simplified Debugging and Logging: Detailed execution logs are available within the Azure Function App. Alerts are annotated if no URL is found or if the function encounters an error during execution
-- Configurable Polling Interval: The frequency at which Defender alerts are fetched (polling interval) can be adjusted to fit operational requirements.
+- **Automatic URL Extraction from Defender Alerts**: The connector automatically retrieves URLs from multiple Defender alert types, including: Emails reported as phishing or spam, Detected malicious emails, Phishing or blocked URLs, Potentially malicious URL clicks, Emails removed after delivery and any Custom alerts you may create,
+- **Configurable URL Submission to VMRay**: URLs are submitted to VMRay for analysis if no prior analysis exists within a configurable time window (e.g., the past x days).
+- **Comprehensive Analysis Integration**: Analysis results for all samples—including multiple URLs and any child samples—are added as comments to the corresponding Microsoft Defender alert. Each comment includes the analysis date for traceability.
+- **Automatic IOC Enrichment in Defender**: Malicious and suspicious IOCs identified by VMRay are automatically added as Microsoft Defender indicators. Separate configurable actions (e.g., block, audit) can be defined for Malicious vs. suspicious verdicts, and files vs URLs/IPs). IOC expiration time is fully configurable.
+- **Incident Tagging in Defender**: Defender incidents are automatically tagged with the most severe verdict identified by VMRay (across multiple related alerts) and the associated threat name extracted from analyzed URLs
+- **Serverless Architecture**: The connector is deployed on Azure as a serverless function app with blob storage. Deployment is simplified via a one-click setup directly from GitHub.
+- **Simplified Debugging and Logging**: Detailed execution logs are available within the Azure Function App. Alerts are annotated if no URL is found or if the function encounters an error during execution
+- **Configurable Polling Interval**: The frequency at which Defender alerts are fetched (polling interval) can be adjusted to fit operational requirements.
 #### Known Issues
 - Teams Alerts: URLs cannot currently be extracted from Teams alerts due to API limitations in Microsoft Defender and Microsoft Graph.
 - Email Attachments: File attachments from emails are not analyzed, as they become inaccessible once the email has been removed or quarantined.
