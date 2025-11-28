@@ -140,20 +140,6 @@
         "description": "Provide number of retries, when Microsoft Defender API is not responding."
       }
     },
-    "MachineAvailabilityTimeout": {
-      "type": "int",
-      "defaultValue": 10,
-      "metadata": {
-        "description": "Provide maximum time to wait in minutes, when the machine is not responding."
-      }
-    },
-    "MachineAvailabilityRetry": {
-      "type": "int",
-      "defaultValue": 5,
-      "metadata": {
-        "description": "Provide number of retries, when machine is not responding."
-      }
-    },
     "CreateIndicatorsInDefender": {
       "type": "bool",
       "defaultValue": true,
@@ -170,7 +156,7 @@
         "BlockAndRemediate",
         "Warn"
       ],
-      "defaultValue": "Block",
+      "defaultValue": "Audit",
       "metadata": {
         "description": "The action that is taken if the indicator is discovered in the organization."
       }
@@ -184,7 +170,7 @@
         "BlockAndRemediate",
         "Warn"
       ],
-      "defaultValue": "Block",
+      "defaultValue": "Audit",
       "metadata": {
         "description": "The action that is taken if the indicator is discovered in the organization."
       }
@@ -198,7 +184,7 @@
         "BlockAndRemediate",
         "Warn"
       ],
-      "defaultValue": "Block",
+      "defaultValue": "Audit",
       "metadata": {
         "description": "The action that is taken if the indicator is discovered in the organization."
       }
@@ -212,7 +198,7 @@
         "BlockAndRemediate",
         "Warn"
       ],
-      "defaultValue": "Block",
+      "defaultValue": "Audit",
       "metadata": {
         "description": "The action that is taken if the indicator is discovered in the organization."
       }
@@ -407,14 +393,6 @@
             {
               "name": "VmrayAnalysisJobTimeout",
               "value": "[parameters('VmrayAnalysisJobTimeout')]"
-            },
-            {
-              "name": "MachineAvailabilityTimeout",
-              "value": "[parameters('MachineAvailabilityTimeout')]"
-            },
-            {
-              "name": "MachineAvailabilityRetry",
-              "value": "[parameters('MachineAvailabilityRetry')]"
             },
             {
               "name": "DefenderApiMaxRetry",
