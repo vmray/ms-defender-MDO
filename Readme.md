@@ -86,22 +86,17 @@ This project provides an integration between Microsoft Defender for Office 365 (
 ### WindowsDefenderATP
 |       Category       |   Permission Name   | Description                                                            |
 |:---------------------|:--------------------|:-----------------------------------------------------------------------|
-| Alert                | Alert.Read.All      | Needed to retrieve alerts and related evidence                         |
-| Alert                | Alert.ReadWrite.All | Needed to enrich alerts with sample information                        | |
-| Ti                   | Ti.Read.All | Needed to retrieve indicators                                          |
-| Ti                   | Ti.ReadWrite | Needed to retrieve and submit indicators (application specific)        |
+| Alert                | Alert.ReadWrite.All | Needed to retrieve alerts and enrich them with sample information      |
 | Ti                   | Ti.ReadWrite.All | Needed to retrieve and submit indicators (general)                     |
 
 ![06](Images/06.png)
 
 - Follow the same steps as above to provide permission for `Microsoft Graph API`
 
-### WindowsDefenderATP
+### Microsoft Graph
 | Category                      | Permission Name     | Description                                                           |
 |:------------------------------|:--------------------|:----------------------------------------------------------------------|
-| SecurityAlert.Read.All        | Alert.Read.All      | Read all security alerts                                              |
 | SecurityAlert.ReadWrite.All   | Alert.ReadWrite.All | Read and write to all security alerts                                 |
-| SecurityIncident.Read.All     | Incident.Read.All   | Read all security incidents                                         |
 | SecurityIncident.ReadWrite.All| Incident.ReadWrite  | Read and write to all security incidents       |
 | ThreatHunting.Read.All        | Hunting.Read.All    | Run hunting queries                    |
 
