@@ -166,8 +166,6 @@ This project provides an integration between Microsoft Defender for Office 365 (
 | Add Tags To Incident | If true, VMRay verdict and threat names will be added to incidents tag in Defender console.                                                                                |
 | Defender API Retry Timeout                              | Provide maximum time to wait in minutes, when Microsoft Defender API is not responding.                                                            |
 | Defender API Max Retry                                  | Provide number of retries, when Microsoft Defender API is not responding                                                                           |
-| Machine Availability Timeout                            | Provide maximum time to wait in minutes, when the machine is not responding                                                                        |
-| Machine Availability Retry                              | Provide number of retries, when machine is not responding                                                                                          |
 | Create Indicators In Defender                           | If true, Indicators will be created in Microsoft Defender                                                                                          |
 | Vmray Sample Verdict                                    | Based on the selection, Indicators will be created in Microsoft Defender                                                                           |
 | Defender Indicator Action For Malicious IP Address URL  | The action that is taken if the indicator is Malicious URL or IP Address discovered in the organization                                            |
