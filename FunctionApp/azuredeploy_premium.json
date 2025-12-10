@@ -131,7 +131,7 @@
         "9",
         "10"
       ],
-      "defaultValue": "2",
+      "defaultValue": "3",
       "metadata": {
         "description": "Select the Interval."
       }
