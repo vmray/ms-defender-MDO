@@ -1,6 +1,6 @@
 # Microsoft Defender for Office365 Azure Connector for VMRay Advanced Malware Sandbox
 
-**Latest Version:** 1.0.0 - **Release Date: 28/10/2025** 
+**Latest Version:** 1.0.1 - **Release Date: 10/12/2025** 
 
 ## Overview
 
@@ -185,3 +185,10 @@ This project provides an integration between Microsoft Defender for Office 365 (
      ![d3](Images/d3.png)
 
   6. Review all logs under the selected execution.
+ 
+     ## Version History
+
+| Version        | Release Date | Release Notes
+|:---------------|:-------------|:---------------- |
+| 1.0.1          | `10-12-2025` | <ul><li>Improvements: Filter out threat names from AV engine to ensure better clarity</li><li>Bug fix: Threat name from child sample was not visible in Incident tag.</li><li>Default value adjustment: default alert polling time increased to 3 minutes as URL takes typically over 3 minutes to appear in the Graph API. Defender API Max retry increased to 12 to ensure getting the URL.</li></ul> |
+| 1.0.0 	 | `28-10-2025` | <ul><li>Initial release</li><li>Enrich alert's comment with url analysis and their child sample</li><li>Upload IOCs to Defende indicators with configurable actions and expiration</li><li>Add tags to incidents with VMRay most severe verdict and threat names</li></ul> |
