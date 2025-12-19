@@ -135,7 +135,7 @@
     },
     "DefenderApiMaxRetry": {
       "type": "int",
-      "defaultValue": 12,
+      "defaultValue": 2,
       "metadata": {
         "description": "Provide number of retries, when Microsoft Defender API is not responding."
       }
