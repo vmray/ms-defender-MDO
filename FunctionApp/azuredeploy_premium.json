@@ -112,7 +112,7 @@
         "Suspicious",
         "Malicious & Suspicious"
       ],
-      "defaultValue": "Malicious",
+      "defaultValue": "Malicious & Suspicious",
       "metadata": {
         "description": "Based on the selection, Indicators will be created in Microsoft Defender."
       }
