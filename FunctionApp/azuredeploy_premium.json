@@ -233,6 +233,13 @@
       "metadata": {
         "description": "True if alert generation is required, False if this indicator shouldn't generate an alert."
       }
+    },
+    "MinimumAlertAge": {
+      "type": "int",
+      "defaultValue": 5,
+      "metadata": {
+        "description": "Minimum age of alerts in minutes."
+      }
     }
   },
   "variables": {
@@ -454,6 +461,10 @@
             {
               "name": "AddTagsToIncident",
               "value": "[parameters('AddTagsToIncident')]"
+            },
+            {
+              "name": "MinimumAlertAge",
+              "value": "[parameters('MinimumAlertAge')]"
             }
           ]
         }
