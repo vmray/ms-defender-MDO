@@ -168,6 +168,7 @@ This project provides an integration between Microsoft Defender for Office 365 (
 | Defender Indicator Action For Malicious File            | The action that is taken if the indicator is Malicious File discovered in the organization                                                         |
 | Defender Indicator Action For Suspicious File           | The action that is taken if the indicator is Suspicious File discovered in the organization                                                        |
 | Defender Indicator Alert | True if alert generation is required, False if this indicator shouldn't generate an alert                                                          |
+| Minimum Alert Age | Minimum age of alerts in minutes.                                                        |
 	
 - Once you provide the above values, please click on `Review + create` button.
 
