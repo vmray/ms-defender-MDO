@@ -240,6 +240,13 @@
       "metadata": {
         "description": "Minimum age of alerts in minutes."
       }
+    },
+    "URLExclusionRegex": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Provide a comma seperated regex pattern to ignore URLs for analysis."
+      }
     }
   },
   "variables": {
@@ -465,6 +472,10 @@
             {
               "name": "MinimumAlertAge",
               "value": "[parameters('MinimumAlertAge')]"
+            },
+            {
+              "name": "URLExclusionRegex",
+              "value": "[parameters('URLExclusionRegex')]"
             }
           ]
         }
