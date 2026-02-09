@@ -17,7 +17,7 @@ This project provides an integration between Microsoft Defender for Office 365 (
 - The connector build using Azure Function App.
   1. The function app is time triggered function app.
   2. It's continuously fetching `O365` alerts from defender portal.
-  3. Azure function app `VMRay_O365` checks if the alert contains a Url and checks if the Url has already been analyzed by VMRay.
+  3. Azure function app `VMRay_O365` checks if the alert contains a Url and checks if the Url is white-listed (URL Regex exclusion) or has already been analyzed by VMRay.
   4. If the Url was already analysed, it checks the time period configured by the user to reanalyze the Url.
   5. Azure function app `VMRay_O365` uses advance hunting query to fetch Urls.
   6. If Url present `VMRay_O365` submit that Url to VMRay.
