@@ -1,6 +1,6 @@
 # Microsoft Defender for Office365 Azure Connector for VMRay Advanced Malware Sandbox
 
-**Latest Version:** 1.0.1 - **Release Date: 10/12/2025** 
+**Latest Version:** 1.0.3 - **Release Date: 27/02/2026** 
 
 ## Overview
 
