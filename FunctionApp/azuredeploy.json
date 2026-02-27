@@ -107,7 +107,7 @@
         "9",
         "10"
       ],
-      "defaultValue": "3",
+      "defaultValue": "5",
       "metadata": {
         "description": "Select the Interval."
       }
@@ -221,7 +221,44 @@
       "type": "string",
       "defaultValue": "",
       "metadata": {
-        "description": "Provide a comma seperated regex pattern to ignore URLs for analysis."
+        "description": "Provide a comma seperated regex pattern to ignore URLs for analysis. e.g., *.loc, *.safelinks.protection.outlook.com"
+      }
+    },
+    "AnalyzeURPAttachments": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "If true, User Reported Phishing attachments will be analyzed."
+      }
+    },
+    "AddAlertIdTags": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "If true, Alert ID will be added as tags to VMRay submissions."
+      }
+    },
+    "LookbackEmailDays": {
+      "type": "string",
+      "allowedValues": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "defaultValue": "7",
+      "metadata": {
+        "description": "Lookback period for email in days."
+      }
+    },
+    "AlertsSeverity": {
+      "type": "string",
+      "defaultValue": "informational, low, medium, high",
+      "metadata": {
+        "description": "Only alerts with the specified severity levels will be processed. Enter severity levels separated by commas (e.g., informational, low, medium, high)."
       }
     }
   },
@@ -475,6 +512,22 @@
             {
               "name": "URLExclusionRegex",
               "value": "[parameters('URLExclusionRegex')]"
+            },
+            {
+              "name": "AnalyzeURPAttachments",
+              "value": "[parameters('AnalyzeURPAttachments')]"
+            },
+            {
+              "name": "AddAlertIdTags",
+              "value": "[parameters('AddAlertIdTags')]"
+            },
+            {
+              "name": "LookbackEmailDays",
+              "value": "[parameters('LookbackEmailDays')]"
+            },
+            {
+              "name": "AlertsSeverity",
+              "value": "[parameters('AlertsSeverity')]"
             }
           ]
         }
