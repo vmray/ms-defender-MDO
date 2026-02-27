@@ -99,6 +99,8 @@ This project provides an integration between Microsoft Defender for Office 365 (
 | SecurityAlert.ReadWrite.All   | Alert.ReadWrite.All | Read and write to all security alerts                                 |
 | SecurityIncident.ReadWrite.All| Incident.ReadWrite  | Read and write to all security incidents       |
 | ThreatHunting.Read.All        | Hunting.Read.All    | Run hunting queries                    |
+|  Mail.Read        | Mail.Read    | Read mail in all mailboxes                    |
+
 
 - After setting only the necessary permissions, click the `Grant admin consent for ...` button to approve permissions.
 
