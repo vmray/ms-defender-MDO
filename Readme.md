@@ -10,6 +10,7 @@ This project provides an integration between Microsoft Defender for Office 365 (
 
 - **Understand Attacker Intent**: Gain full visibility into the next stage of a phishing attack with detailed insight into attacker behavior and objectives.
 - **Streamline Alert Triage**: Get instant clarity within Microsoft Defender alerts — including verdicts, malware names, classifications, and VTI data. The integration automatically analyzes both the phishing URL(s) and any payloads they may download.
+- **User Reported Phishing**: The connector fetches **both the URLs and the attachment** for spam or phishing reported by user. As dangerous phishing kits bypass usual email security, these attacks will first be detected in URP mailbox. VMRay dynamic analysis can automatically uncover and block them (using indicators) before a SOC analyst has time to review them.
 - **Enhance Protection**: Automatically add IOCs from VMRay analysis to Microsoft Defender indicators, strengthening defenses and preventing future attacks.
 - **Accelerate Incident Response**: Access comprehensive, in-depth sandbox reports directly from VMRay to speed up investigation and resolution.
 
