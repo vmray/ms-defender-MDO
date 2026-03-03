@@ -34,7 +34,7 @@ This project provides an integration between Microsoft Defender for Office 365 (
 - **Configurable Polling Interval**: The frequency at which Defender alerts are fetched (polling interval) can be adjusted to fit operational requirements.
 #### Known Issues
 - Teams Alerts: URLs cannot currently be extracted from Teams alerts due to API limitations in Microsoft Defender and Microsoft Graph.
-- Email Attachments: File attachments from emails are not analyzed, as they become inaccessible once the email has been removed or quarantined.
+- Email Attachments: File attachments are only analyzed for User Reported phishing/Spam. For other alerts, they are inaccessible once the email has been removed or quarantined.
 ## Requirements
 - Microsoft Defender for Office365.
 - VMRay FinalVerdict, VMRay TotalInsight.
