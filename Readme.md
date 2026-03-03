@@ -174,7 +174,7 @@ This project provides an integration between Microsoft Defender for Office 365 (
 | Minimum Alert Age | Minimum age of alerts in minutes.                                                        |
 | URL Exclusion Regex | Provide a comma seperated regex pattern to ignore URLs for analysis. e.g., *.loc, *.safelinks.protection.outlook.com                |
 | Analyze URP Attachments | If true, User Reported Phishing attachments will be analyzed               |
-| Add AlertId Tags | If true, Alert ID will be added as tags to VMRay submissions                |
+| Add AlertId Tags | If true, Alert ID will be added as tags to VMRay submissions. This cannot be used before VMRay platform release 2026.2 as special character in tags are not supported before that.                |
 | Lookback Email Days | Lookback period for email in days.              |
 | Alerts Severity | Only alerts with the specified severity levels will be processed. Enter severity levels separated by commas (e.g., informational, low, medium, high)               |
 	
