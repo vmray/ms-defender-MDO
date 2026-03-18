@@ -16,13 +16,17 @@ This project provides an integration between Microsoft Defender for Office 365 (
 
 ### Technical Solution Overview
 - The connector build using Azure Function App.
-  1. The function app is time triggered function app.
-  2. It's continuously fetching `O365` alerts from defender portal.
-  3. Azure function app `VMRay_O365` checks if the alert contains a Url and checks if the Url is white-listed (URL Regex exclusion) or has already been analyzed by VMRay.
-  4. If the Url was already analysed, it checks the time period configured by the user to reanalyze the Url.
-  5. Azure function app `VMRay_O365` uses advance hunting query to fetch Urls.
-  6. If Url present `VMRay_O365` submit that Url to VMRay.
-  7. Once VMRay analyse the Url `VMRay_O365` fetch the sample details and add the details to alert's comment.
+  1. The function app is time triggered function app. It's continuously fetching `O365` alerts from defender portal.
+  2. Azure function app `VMRay_O365` checks if the alert contains a Url and checks if the Url is white-listed (URL Regex exclusion) or has already been analyzed by VMRay.
+  3. If the alert was User Reported Phishing (URP) or User Reported Spam, the function app upload the attachment.
+  4. If the Url or attachment were already analysed, it checks the time period configured by the user to reanalyze the sample.
+  5. Azure function app `VMRay_O365` submits the sample to VMRay for analysis
+  6. Azure function app gets the analysis results.
+  7. Comment is added to Defender alert
+  8. Tags indicating verdict and threat names are added to the incident
+  9. IOCs are added to Defender indicators
+ 
+     ![solution_overview](Images/MDOArchitecture.png)
 ### Features
 - **Automatic URL Extraction from Defender Alerts**: The connector automatically retrieves URLs from multiple Defender alert types, including: Emails reported as phishing or spam, Detected malicious emails, Phishing or blocked URLs, Potentially malicious URL clicks, Emails removed after delivery and any Custom alerts you may create,
 - **Configurable URL Submission to VMRay**: URLs are submitted to VMRay for analysis if no prior analysis exists within a configurable time window (e.g., the past x days).
