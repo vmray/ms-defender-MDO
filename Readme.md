@@ -1,6 +1,6 @@
 # Microsoft Defender for Office365 Azure Connector for VMRay Advanced Malware Sandbox
 
-**Latest Version:** 1.0.3 - **Release Date: 27/02/2026** 
+**Latest Version:** 1.0.4 - **Release Date: 04/05/2026** 
 
 ## Overview
 
@@ -23,14 +23,16 @@ This project provides an integration between Microsoft Defender for Office 365 (
   5. Azure function app `VMRay_O365` submits the sample to VMRay for analysis
   6. Azure function app gets the analysis results.
   7. Comment is added to Defender alert
-  8. Tags indicating verdict and threat names are added to the incident
-  9. IOCs are added to Defender indicators
+  8. Comment is added to the parent Defender incident (if Add Comments To Incident is enabled)
+  9. Tags indicating verdict and threat names are added to the incident
+  10. IOCs are added to Defender indicators
  
      ![solution_overview](Images/MDOArchitecture.png)
 ### Features
 - **Automatic URL Extraction from Defender Alerts**: The connector automatically retrieves URLs from multiple Defender alert types, including: Emails reported as phishing or spam, Detected malicious emails, Phishing or blocked URLs, Potentially malicious URL clicks, Emails removed after delivery and any Custom alerts you may create,
 - **Configurable URL Submission to VMRay**: URLs are submitted to VMRay for analysis if no prior analysis exists within a configurable time window (e.g., the past x days).
 - **Comprehensive Analysis Integration**: Analysis results for all samples—including multiple URLs and any child samples—are added as comments to the corresponding Microsoft Defender alert. Each comment includes the analysis date for traceability.
+- **Incident Comment Enrichment**: VMRay analysis results are also appended as comments on the parent Defender incident (in addition to the alert), with built-in deduplication to avoid repeated posts across multiple alerts of the same incident.
 - **Automatic IOC Enrichment in Defender**: Malicious and suspicious IOCs identified by VMRay are automatically added as Microsoft Defender indicators. Separate configurable actions (e.g., block, audit) can be defined for Malicious vs. suspicious verdicts, and files vs URLs/IPs). IOC expiration time is fully configurable.
 - **Incident Tagging in Defender**: Defender incidents are automatically tagged with the most severe verdict identified by VMRay (across multiple related alerts) and the associated threat name extracted from analyzed URLs
 - **Serverless Architecture**: The connector is deployed on Azure as a serverless function app with blob storage. Deployment is simplified via a one-click setup directly from GitHub.
@@ -166,6 +168,7 @@ This project provides an integration between Microsoft Defender for Office 365 (
 | Alert Polling Interval In Minutes                       | Select how often the connector check if there are new alerts. Use Cron format, such as */10 * * * *   for 10 minutes                                                                                                                            |
 | Indicator Expiration In Days                            | Please specify the number of days the indicator should remain valid.                                                                               |
 | Add Tags To Incident | If true, VMRay verdict and threat names will be added to incidents tag in Defender console.                                                                                |
+| Add Comments To Incident | If true, VMRay enrichment comments will be appended to the parent incident of each processed alert.                                                                                |
 | Defender API Retry Timeout                              | Provide maximum time to wait in minutes, when Microsoft Defender API is not responding.                                                            |
 | Defender API Max Retry                                  | Provide number of retries, when Microsoft Defender API is not responding                                                                           |
 | Create Indicators In Defender                           | If true, Indicators will be created in Microsoft Defender                                                                                          |
@@ -203,6 +206,7 @@ This project provides an integration between Microsoft Defender for Office 365 (
 
 | Version        | Release Date | Release Notes
 |:---------------|:-------------|:---------------- |
+| 1.0.4          | `04-05-2026` | <ul><li>Improvement: Added option to also append VMRay enrichment comments to the parent Defender incident (controlled by `Add Comments To Incident`). Includes per-incident dedup to avoid repeated posts across multiple alerts of the same incident.</li></ul> |
 | 1.0.3          | `27-02-2026` | <ul><li>Improvement: Analyse email attachment related to User Reported Phishing or Junk MDO alerts.</li><li>Improvement: Whitelist URLs with Regex.</li><li>Improvement: Configurable number of days for email in KQL query: first query with 24 hours, retry with configured email age.</li><li>Add Alert ID tags to submissions.</li><li>Improvement: Filter submissions by severity.</li></ul> |
 | 1.0.2          | `19-12-2025` | <ul><li>Improvement: To reduce the amount of queries on Graph API to fetch URL, the minimum alert age was introduced. It ensures that we try to fetch the url only x minutes (default 5) after the alert.</li><li>Default value adjustment: The default amount of retries was reduced to 2 and time between retries increased to 1 minute.</li><li>Bug fix: In the KQL query to fetch URL related to the email, the email age was reduced to 24 hours instead of 30 days that was too heavy in large deployments.</li></ul> |
 | 1.0.1          | `10-12-2025` | <ul><li>Improvement: Added indication in alert if no url is found</li><li>Improvement: Filter out threat names from AV engine to ensure better clarity</li><li>Bug fix: Threat name from child sample was not visible in Incident tag.</li><li>Default value adjustment: default alert polling time increased to 3 minutes as URL takes typically over 3 minutes to appear in the Graph API. Defender API Max retry increased to 12 to ensure getting the URL.</li></ul> |
