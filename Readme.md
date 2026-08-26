@@ -187,6 +187,14 @@ This project provides an integration between Microsoft Defender for Office 365 (
 	
 - Once you provide the above values, please click on `Review + create` button.
 
+## Automated Deployment (PowerShell Script)
+
+> As an alternative to manually clicking through the Azure Portal steps above, `Scripts/Deploy-VMRayMDOConnector.ps1` is an interactive PowerShell script that automates the App Registration and Function App deployment phases (including the API permissions, client secret, and admin consent steps that are otherwise manual). It's designed to run from Azure Cloud Shell.
+>
+> The only step that may still require a manual click is admin consent, and only if the script can't grant it for you — in that case it prints the consent URL to forward to a Global Administrator.
+>
+> See [docs/AUTOMATED-DEPLOYMENT.md](docs/AUTOMATED-DEPLOYMENT.md) for the full guide, including prerequisites, step-by-step usage, re-deployment / existing App Registration reuse, and troubleshooting.
+
 ## Debugging
 - To debug and check logs after receiving an email, follow these steps:
   1. Navigate to the Azure Function App.
