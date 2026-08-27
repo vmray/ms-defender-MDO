@@ -179,13 +179,51 @@ This project provides an integration between Microsoft Defender for Office 365 (
 | Defender Indicator Action For Suspicious File           | The action that is taken if the indicator is Suspicious File discovered in the organization                                                        |
 | Defender Indicator Alert | True if alert generation is required, False if this indicator shouldn't generate an alert                                                          |
 | Minimum Alert Age | Minimum age of alerts in minutes.                                                        |
-| URL Exclusion Regex | Provide a comma seperated regex pattern to ignore URLs for analysis. e.g., *.loc, *.safelinks.protection.outlook.com                |
+| URL Exclusion Regex | Comma separated list of regular expressions (not wildcards). Any URL matching one of them is skipped and never submitted to VMRay. See [URL Exclusion Regex examples](#url-exclusion-regex-examples) below.                |
 | Analyze URP Attachments | If true, User Reported Phishing attachments will be analyzed               |
 | Add AlertId Tags | If true, Alert ID will be added as tags to VMRay submissions. This cannot be used before VMRay platform release 2026.2 as special character in tags are not supported before that.                |
 | Lookback Email Days | Lookback period for email in days.              |
 | Alerts Severity | Only alerts with the specified severity levels will be processed. Enter severity levels separated by commas (e.g., informational, low, medium, high)               |
 	
 - Once you provide the above values, please click on `Review + create` button.
+
+### URL Exclusion Regex examples
+
+The `URL Exclusion Regex` setting takes a **comma separated list of regular expressions** — not
+wildcards. Any URL matching at least one of them is skipped and never submitted to VMRay.
+
+Points to keep in mind when writing a pattern:
+
+- A dot in a regular expression matches *any* character, so escape it as `\.` when you mean a
+  literal dot. `contoso.com` also matches `contosoXcom`.
+- Anchor the pattern with `^` so that it has to match from the start of the URL. Without an anchor,
+  `contoso\.com` also matches `https://notcontoso.com.example.ru/`, which is probably not intended.
+- Matching is case-insensitive, so `CONTOSO.COM` is covered by a lowercase pattern.
+- Wildcard-style entries such as `*.loc` are **not** valid regular expressions. An invalid entry is
+  written to the Function App logs and ignored; the remaining patterns keep working.
+- Surrounding spaces around the commas are trimmed, so both `a,b` and `a, b` work.
+- A comma always separates two entries, so a pattern cannot itself contain a comma. Use `x{2}x{3}`
+  style repetition instead of `x{2,3}`.
+
+| Goal | Pattern |
+|:-----|:--------|
+| A domain and all its subdomains | `^https?://([^/]*\.)?contoso\.com(/\|\?\|$)` |
+| One exact host only | `^https?://contoso\.com(/\|\?\|$)` |
+| Outlook Safe Links wrappers | `^https?://[^/]*\.safelinks\.protection\.outlook\.com/` |
+| Any host ending in an internal TLD | `^https?://[^/]*\.loc(/\|\?\|$)` |
+| Every Microsoft-owned host | `^https?://([^/]*\.)?microsoft\.com(/\|\?\|$)` |
+| A specific URL path prefix | `^https?://intranet\.contoso\.com/public/` |
+
+Combining the first two rows of the table into a single setting value:
+
+```
+^https?://([^/]*\.)?contoso\.com(/|\?|$), ^https?://[^/]*\.safelinks\.protection\.outlook\.com/
+```
+
+After changing the setting, the Function App picks up the new value on its next restart. On every
+polling cycle the logs report how many patterns were loaded, and name any entry that was rejected as
+invalid, which is the quickest way to confirm the setting is being applied as intended.
+
 
 ## Automated Deployment (PowerShell Script)
 
