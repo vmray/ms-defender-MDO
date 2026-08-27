@@ -228,7 +228,7 @@
       "type": "string",
       "defaultValue": "",
       "metadata": {
-        "description": "Provide a comma seperated regex pattern to ignore URLs for analysis. e.g., *.loc, *.safelinks.protection.outlook.com"
+        "description": "Comma separated list of regular expressions (not wildcards). Any URL matching one of them is skipped and never submitted to VMRay. Escape dots as \\. and anchor the pattern to the host. Example: ^https?://([^/]*\\.)?contoso\\.com(/|\\?|$) - see the Readme for more examples."
       }
     },
     "AnalyzeURPAttachments": {
