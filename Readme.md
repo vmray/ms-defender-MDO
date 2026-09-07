@@ -1,6 +1,6 @@
 # Microsoft Defender for Office365 Azure Connector for VMRay Advanced Malware Sandbox
 
-**Latest Version:** 1.0.4 - **Release Date: 04/05/2026** 
+**Latest Version:** 1.0.5 - **Release Date: 27/08/2026** 
 
 ## Overview
 
@@ -248,10 +248,11 @@ invalid, which is the quickest way to confirm the setting is being applied as in
 
   6. Review all logs under the selected execution.
  
-     ## Version History
+## Version History
 
 | Version        | Release Date | Release Notes
 |:---------------|:-------------|:---------------- |
+| 1.0.5          | `27-08-2026` | <ul><li>Added an automated deployment option: the interactive PowerShell script `Scripts/Deploy-VMRayMDOConnector.ps1` automates the App Registration and Function App deployment, as an alternative to the manual Azure Portal steps. See [docs/AUTOMATED-DEPLOYMENT.md](docs/AUTOMATED-DEPLOYMENT.md) for the full guide.</li><li>Bug fix: surrounding whitespace is now trimmed from each `URL Exclusion Regex` entry. Previously a value written as `pattern1, pattern2` gave the second pattern a literal leading space, so it could never match a URL.</li><li>Improvement: an invalid `URL Exclusion Regex` entry is now written to the Function App logs and skipped, leaving the remaining patterns and the alert processing working. Previously one bad pattern interrupted evidence collection for the alert.</li><li>Rewrote the `URL Exclusion Regex` documentation with worked examples, and clarified that the setting takes regular expressions rather than wildcards.</li></ul> |
 | 1.0.4          | `04-05-2026` | <ul><li>Improvement: Added option to also append VMRay enrichment comments to the parent Defender incident (controlled by `Add Comments To Incident`). Includes per-incident dedup to avoid repeated posts across multiple alerts of the same incident.</li></ul> |
 | 1.0.3          | `27-02-2026` | <ul><li>Improvement: Analyse email attachment related to User Reported Phishing or Junk MDO alerts.</li><li>Improvement: Whitelist URLs with Regex.</li><li>Improvement: Configurable number of days for email in KQL query: first query with 24 hours, retry with configured email age.</li><li>Add Alert ID tags to submissions.</li><li>Improvement: Filter submissions by severity.</li></ul> |
 | 1.0.2          | `19-12-2025` | <ul><li>Improvement: To reduce the amount of queries on Graph API to fetch URL, the minimum alert age was introduced. It ensures that we try to fetch the url only x minutes (default 5) after the alert.</li><li>Default value adjustment: The default amount of retries was reduced to 2 and time between retries increased to 1 minute.</li><li>Bug fix: In the KQL query to fetch URL related to the email, the email age was reduced to 24 hours instead of 30 days that was too heavy in large deployments.</li></ul> |
